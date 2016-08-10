@@ -1,9 +1,9 @@
-package com.dwj.dytheme;
+package com.dwj.dytheme.view;
 
 import android.content.res.Resources;
 import android.view.View;
 
-import com.dwj.ResourceType;
+import com.dwj.dytheme.resource.ResourceType;
 
 /**
  * Created by Administrator on 2016/8/7.
@@ -13,6 +13,17 @@ public class ViewInfo {
     protected int resouceId;
     protected Resources resources;
     protected ResourceType resourceType;
+
+    public ViewInfo(){
+
+    }
+
+    public ViewInfo(ViewInfo info){
+        this.resouceId = info.resouceId;
+        this.view = info.view;
+        this.resources = info.resources;
+        this.resourceType = info.resourceType;
+    }
 
     public View getView() {
         return view;
@@ -47,8 +58,10 @@ public class ViewInfo {
     }
 
     public void updateResource(){
-        if(resourceType == ResourceType.DRAWABLE || resourceType == ResourceType.COLOR){
-            view.setBackgroundResource(resouceId);
+        if(resourceType == ResourceType.DRAWABLE ){
+            view.setBackgroundDrawable(resources.getDrawable(resouceId));
+        }else if(resourceType == ResourceType.COLOR){
+            view.setBackgroundColor(resources.getColor(resouceId));
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.dwj.dytheme;
+package com.dwj.dytheme.resource;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -14,15 +14,8 @@ import java.lang.reflect.Method;
  */
 public class CustomResourceHelper {
     private static final String SHARE_USER_ID_MATCH = "com.dwj";
-    private String dexPath;
-    private Context context;
 
-    public CustomResourceHelper(Context context, String dexPath){
-        this.context = context;
-        this.dexPath = dexPath;
-    }
-
-    public CustomResource getCustomResource(){
+    public static CustomResource getCustomResource(Context context , String dexPath){
         CustomResource customRes = null;
         if(dexPath == null){
             return customRes;
@@ -34,14 +27,14 @@ public class CustomResourceHelper {
             if(packageArchiveInfo.sharedUserId.contains(SHARE_USER_ID_MATCH)){
                 customRes = new CustomResource();
                 customRes.setPackageName(packageArchiveInfo.packageName);
-                customRes.setResources(newResourceByPath(dexPath));
+                customRes.setResources(newResourceByPath(context,dexPath));
             }
         }
 
         return customRes;
     }
 
-    private Resources newResourceByPath(String path){
+    private static Resources newResourceByPath(Context context,String path){
         Resources res = null;
         try {
             AssetManager am = AssetManager.class.newInstance();

@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dwj.annotation.DynamicTheme;
@@ -17,20 +18,24 @@ public class MainActivity extends DynamicThemeAppCompatActivity{
     @DynamicTheme(resouceId = R.string.text_string)
     private TextView tv;
 
+    @DynamicTheme(resouceId = R.color.iv_color)
+    private ImageView iv;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         tv = (TextView) findViewById(R.id.tv);
+        iv = (ImageView) findViewById(R.id.iv);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
                 notifyThemeUpdate();
 
             }

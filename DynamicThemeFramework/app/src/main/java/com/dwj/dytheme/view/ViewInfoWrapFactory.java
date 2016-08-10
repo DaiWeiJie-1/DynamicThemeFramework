@@ -1,7 +1,7 @@
-package com.dwj.dytheme;
+package com.dwj.dytheme.view;
 
 
-import com.dwj.ResourceType;
+import com.dwj.dytheme.resource.ResourceType;
 
 /**
  * Created by Administrator on 2016/8/7.
@@ -9,12 +9,15 @@ import com.dwj.ResourceType;
 public class ViewInfoWrapFactory {
 
     public static ViewInfo wrapViewInfo(ViewInfo info, ViewType viewType, ResourceType resType){
+        info.setResourceType(resType);
         switch (viewType){
             case TEXTVIEW:
-                return new TextViewInfo(info,resType);
+                return new TextViewInfo(info);
+
+            case IMAGEVIEW:
+                return new ImageViewInfo(info);
 
             default:
-                info.setResourceType(resType);
                 return info;
 
         }

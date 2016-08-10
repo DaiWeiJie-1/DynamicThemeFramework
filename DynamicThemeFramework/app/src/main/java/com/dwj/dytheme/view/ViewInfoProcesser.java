@@ -1,11 +1,12 @@
-package com.dwj.dytheme;
+package com.dwj.dytheme.view;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dwj.ResourceType;
+import com.dwj.dytheme.resource.ResourceType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +60,10 @@ public class ViewInfoProcesser {
     private ViewType getViewType(View view){
         if(view instanceof TextView){
             return ViewType.TEXTVIEW;
+        }else if( view instanceof ImageView){
+            return ViewType.IMAGEVIEW;
         }
-        return null;
+        return ViewType.VIEW;
     }
 
     private void chooseResourcesAndUpdateResId(ViewInfo info){

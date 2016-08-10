@@ -1,4 +1,4 @@
-package com.dwj.dytheme;
+package com.dwj.dytheme.resource;
 
 import android.content.res.Resources;
 
