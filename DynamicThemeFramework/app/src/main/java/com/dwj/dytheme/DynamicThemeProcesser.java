@@ -25,14 +25,8 @@ public class DynamicThemeProcesser {
 
     private Context mContext;
 
-    private String mDexPath;
-
     public DynamicThemeProcesser(Context context){
         mContext = context;
-    }
-
-    public void setDynamicThemeDexPath(String path){
-        mDexPath = path;
     }
 
     public void process(DynamicThemeInter inter){
@@ -42,7 +36,8 @@ public class DynamicThemeProcesser {
 
     private void handlerViewInfos(List<ViewInfo> viewInfos){
         ViewInfoProcesser viewInfoProcesser = new ViewInfoProcesser(mContext.getResources());
-        CustomResource customRes = CustomResourceHelper.getCustomResource(mContext,mDexPath);
+        CustomResource customRes = CustomResourceHelper.getCustomResource(mContext,
+                DynamicThemeConfiguration.getInstance().getDynamicThemeDexPath());
         if(customRes != null){
             viewInfoProcesser.setNewResources(customRes.getPackageName(),customRes.getResources());
         }

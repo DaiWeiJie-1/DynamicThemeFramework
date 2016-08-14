@@ -1,9 +1,9 @@
 package com.dwj.framework;
 
+import android.app.Activity;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 
 import com.dwj.dytheme.DynamicThemeConfiguration;
 import com.dwj.dytheme.DynamicThemeInter;
@@ -12,10 +12,9 @@ import com.dwj.dytheme.DynamicThemeProcesser;
 import java.io.File;
 
 /**
- * Created by Administrator on 2016/8/7.
+ * Created by Administrator on 2016/8/14.
  */
-public class DynamicThemeAppCompatActivity extends AppCompatActivity implements DynamicThemeInter{
-
+public class DynamicThemeActivity extends Activity implements DynamicThemeInter{
     private DynamicThemeProcesser dyThemeProcesser;
     private ThemeUpdateBroadCastReceiver themeUpdateReceiver;
 
@@ -52,5 +51,4 @@ public class DynamicThemeAppCompatActivity extends AppCompatActivity implements 
             dyThemeProcesser.notifyUpate();
         }
     }
-
 }
